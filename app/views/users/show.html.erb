@@ -6,9 +6,15 @@
   <% end %>
   private events
 </h1>
+<h3>Hello <%= @user.name %>!</h3>
 <h2>Events created</h2>
-<%= render "shared/event_list", events: @user.created_events %>
+<h3>Past events</h3>
+<%= render "shared/event_list", events: @user.created_events.past %>
+<h3>Future events</h3>
+<%= render "shared/event_list", events: @user.created_events.future %>
 <% if current_user == @user %>
-  <h2>Events going</h2>
-  <%= render "shared/event_list", events: @user.attended_events %>
+  <h3>Events attended</h3>
+  <%= render "shared/event_list", events: @user.attended_events.past %>
+  <h3>Events attending</h3>
+  <%= render "shared/event_list", events: @user.attended_events.future %>
 <% end %>

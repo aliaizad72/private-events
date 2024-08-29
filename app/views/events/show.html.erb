@@ -1,5 +1,5 @@
 <h1><%= @event.name %></h1>
-<h4>Created by: <%= @event.creator.email %></h4>
+<h4>Created by: <%= link_to "#{@event.creator.name}", user_path(@event.creator.id) %></h4>
 <h3>Attendees:</h3>
 <ul>
   <% @event.attendees.each do |attendee| %>

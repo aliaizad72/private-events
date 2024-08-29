@@ -5,4 +5,7 @@ class Event < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 150 }
   validates :time, presence: true
+
+  scope :past, -> { where(time: ..Time.now) }
+  scope :future, -> { where(time: Time.now..) }
 end

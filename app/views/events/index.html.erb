@@ -4,9 +4,8 @@
   <%= link_to 'Profile', user_path(current_user.id) %>
 <% end %>
 
-<%= render "shared/event_list", events: @events %>
-
-<%= link_to 'Create Event', new_event_path %> <br><br>
+<h2>Future Events</h2>
+<%= render "shared/event_list", events: @events.future %>
 
 <% if user_signed_in? %>
   <%= button_to 'Log Out', destroy_user_session_path, method: :delete%>
