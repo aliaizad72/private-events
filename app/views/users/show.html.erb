@@ -1,4 +1,4 @@
-<h1>Here is your events, <%= @user.name %>!</h1>
+<h1>Events created by: <%= @user.name %></h1>
 
 <ol>
   <% @user.created_events.each do |event| %>
@@ -9,6 +9,9 @@
         </li>
         <li>
           Created by: <%= event.creator.email %>
+        </li>
+        <li>
+          <%= link_to "More info", event_path(event.id) %>
         </li>
       </ul>
     </li>
