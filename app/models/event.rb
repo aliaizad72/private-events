@@ -4,5 +4,5 @@ class Event < ApplicationRecord
   has_many :attendees, through: :event_attendees
 
   validates :name, presence: true, length: { maximum: 150 }
-  validates :event_time, presence: true, length: { maximum: 50 }
+  validates :time, presence: true
 end

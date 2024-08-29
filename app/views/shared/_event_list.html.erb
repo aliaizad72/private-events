@@ -6,7 +6,7 @@
           Event name: <%= event.name %>
         </li>
         <li>
-          Date and time: <%= event.event_time %>
+          Date and time: <%= event.time.strftime("%d/%m/%Y %I:%M %p") %>
         </li>
         <% unless current_user == event.creator %>
         <li>
