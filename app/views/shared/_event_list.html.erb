@@ -6,14 +6,21 @@
           Event name: <%= event.name %>
         </li>
         <li>
-          Created by: <%= event.creator.email %>
+          Date and time: <%= event.event_time %>
         </li>
+        <% unless current_user == event.creator %>
         <li>
-          <%= link_to "More info", event_path(event.id) %>
+          Organised by: <%= link_to "#{event.creator.name}", user_path(event.creator.id) %>
         </li>
-        <% unless event.attendees.include?(current_user) %>
+        <% end %>
+        <% if event.attendees.include?(current_user) %>
+          <li>You're going!</li>
+        <% else %>
           <li><%= link_to "Attend", attend_path(event.id) %></li>
         <% end %>
+        <li>
+          <%= link_to "See who attends?", event_path(event.id) %>
+        </li>
       </ul>
     </li>
   <% end %>

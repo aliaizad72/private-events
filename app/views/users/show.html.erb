@@ -1,4 +1,14 @@
-<h1>Events you've created</h1>
+<h1>
+  <% if current_user == @user %>
+    Your
+  <% else %>
+    <%= @user.name %>
+  <% end %>
+  private events
+</h1>
+<h2>Events created</h2>
 <%= render "shared/event_list", events: @user.created_events %>
-<h1>Events you're going</h1>
-<%= render "shared/event_list", events: @user.attended_events %>
+<% if current_user == @user %>
+  <h2>Events going</h2>
+  <%= render "shared/event_list", events: @user.attended_events %>
+<% end %>
