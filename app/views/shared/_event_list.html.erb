@@ -11,6 +11,13 @@
         <li>
           <%= link_to "More info", event_path(event.id) %>
         </li>
+        <li>
+          <% if event.attendees.include?(current_user) %>
+            You're coming!
+          <% else %>
+            <%= link_to "Attend", attend_path(event.id) %>
+          <% end %>
+        </li>
       </ul>
     </li>
   <% end %>
