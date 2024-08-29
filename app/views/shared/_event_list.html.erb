@@ -1,0 +1,18 @@
+<ol>
+  <% events.each do |event| %>
+    <li>
+      <ul>
+        <li>
+          Event name: <%= event.name %>
+        </li>
+        <li>
+          Created by: <%= event.creator.email %>
+        </li>
+        <li>
+          <%= link_to "More info", event_path(event.id) %>
+        </li>
+      </ul>
+    </li>
+  <% end %>
+</ol>
+
