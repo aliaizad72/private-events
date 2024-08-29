@@ -1,2 +1,4 @@
-<h1>Events created by: <%= @user.name %></h1>
+<h1>Events you've created</h1>
 <%= render "shared/event_list", events: @user.created_events %>
+<h1>Events you're going</h1>
+<%= render "shared/event_list", events: @user.attended_events %>
