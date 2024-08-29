@@ -36,7 +36,11 @@ class EventsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @event = Event.find_by(id: params[:id])
+    @event.destroy
+
+    redirect_to current_user, status: 303
   end
 
   private

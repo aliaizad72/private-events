@@ -10,20 +10,23 @@
         </li>
         <% unless current_user == event.creator %>
         <li>
-          Organised by: <%= link_to "#{event.creator.name}", user_path(event.creator.id) %>
+          Organised by: <%= link_to "#{event.creator.name}", user_path(event.creator) %>
         </li>
         <% end %>
         <% if event.attendees.include?(current_user) %>
           <li>You're going!</li>
         <% else %>
-          <li><%= link_to "Attend", attend_path(event.id) %></li>
+          <li><%= link_to "Attend", attend_path(event) %></li>
         <% end %>
         <li>
-          <%= link_to "See who attends?", event_path(event.id) %>
+          <%= link_to "See who attends?", event_path(event) %>
         </li>
         <% if current_user == event.creator && event.time > Time.now %>
           <li>
-            <%= link_to "Edit event", edit_event_path(event.id) %>
+            <%= link_to "Edit", edit_event_path(event) %>
+          </li>
+          <li>
+            <%= link_to "Delete", event_path(event), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
           </li>
         <% end %>
       </ul>

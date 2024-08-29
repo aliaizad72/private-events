@@ -1,7 +1,7 @@
 <h1>Private Events</h1>
 
 <%if user_signed_in? %>
-  <%= link_to 'Profile', user_path(current_user.id) %>
+  <%= link_to 'Profile', user_path(current_user) %>
 <% end %>
 
 <h2>Future Events</h2>
