@@ -21,6 +21,11 @@
         <li>
           <%= link_to "See who attends?", event_path(event.id) %>
         </li>
+        <% if current_user == event.creator && event.time > Time.now %>
+          <li>
+            <%= link_to "Edit event", edit_event_path(event.id) %>
+          </li>
+        <% end %>
       </ul>
     </li>
   <% end %>

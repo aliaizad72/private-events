@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!, only: [ :new, :create ]
+  before_action :authenticate_user!, except: [ :show, :index ]
   def index
     @events = Event.all
   end
@@ -20,6 +20,23 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find_by(id: params[:id])
+  end
+
+  def edit
+    @event = Event.find_by(id: params[:id])
+  end
+
+  def update
+    @event = Event.find_by(id: params[:id])
+
+    if @event.update(event_params)
+      redirect_to current_user
+    else
+      render :edit, status: 422
+    end
+  end
+
+  def delete
   end
 
   private

@@ -1,13 +1,3 @@
 <h1>What's the event, <%= current_user.name %>?</h1>
 
-<%= form_with model: @event do |form| %>
-  <div>
-    <%= form.label :name, 'Event name: ' %>
-    <%= form.text_field :name, autofocus: true %>
-  </div><br>
-  <div>
-    <%= form.label :time, 'Date and time: ' %>
-    <%= form.datetime_local_field :time %>
-  </div><br>
-  <%= form.submit %>
-<% end %>
+<%= render "shared/event_form", event: @event %>
